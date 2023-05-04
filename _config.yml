@@ -29,7 +29,7 @@ twitter_username: ollim_12
 github_username:  OlliMulchandani
 
 # Build settings
-theme: jekyll-theme-so-simple
+theme: minima
 plugins:
   - jekyll-feed
 
