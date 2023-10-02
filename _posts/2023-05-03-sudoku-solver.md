@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sudoko Solver"
+title:  "Sudoku Solver"
 date:   2023-05-03 17:46:07 -0400
 categories: jekyll update
 ---
@@ -95,7 +95,7 @@ This program takes the 81 digit string "0030206009003050010018064000081029007000
 |---|---|---|---|---|---|---|---|---|
 | 0 | 0 | 5 | 0 | 1 | 0 | 3 | 0 | 0 |
 
-It then outputs the solved Sudoko board as another 81 character string: "483921657967345821251876493548132976729564138136798245372689514814253769695417382", which can also be represented in a more friendly manner here:
+It then outputs the solved Sudoku board as another 81 character string: "483921657967345821251876493548132976729564138136798245372689514814253769695417382", which can also be represented in a more friendly manner here:
 
 | 4 | 8 | 3 | 9 | 2 | 1 | 6 | 5 | 7 |
 ---|---|---|---|---|---|---|---|---|
