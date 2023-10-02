@@ -21,7 +21,7 @@
 title: Olli Mulchandani
 email: olli.mulchandani@icloud.com
 description: >- # this means to ignore newlines until "baseurl:"
-  I'm an incoming first-year CS student at UVA. This is my website where you
+  I'm a first-year CS student at UVA. This is my website where you
   can find about me and what I do.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
