@@ -2,7 +2,12 @@
 layout: post
 title: Spotify Playlist Generator
 ---
-This is a program where I experimented with and learned about APIs. The program uses Spotify's developer tools. Unique to my app, I have a client ID and client secret, given to me by spotify and stored in another file in the same environment for security. I take these two, send a request to Spotify asking for a login url, and display that url to the user. The user logs in, collects a unique authorization code (valid for 10 minutes), and inputs that to the program. With the authorization code, I can get an access token (also only valid temporarily), with which I can collect data and perform actions on the user's account (they agree to all of this when they log in). Once it has access, my program will prompt the user for the title, description, and desired length for their playlist. Then, it will randomly select 5 over the user's saved songs and 5 of their top songs over the past 4 weeks, and use them as seeding songs for Spotify's recommendation algorithm. It then takes the specified number of recommended songs and creates a new playlist with them.
+
+This is a program where I experimented with and learned about APIs. The program uses Spotify's developer tools.
+
+ Unique to my app, I have a client ID and client secret, given to me by spotify and stored in another file in the same environment for security. I take these two, send a request to Spotify asking for a login url, and display that url to the user. The user logs in, collects a unique authorization code (valid for 10 minutes), and inputs that to the program. With the authorization code, I can get an access token (also only valid temporarily), with which I can collect data and perform actions on the user's account (they agree to all of this when they log in). 
+ 
+ Once it has access, my program will prompt the user for the title, description, and desired length for their playlist. Then, it will randomly select 5 over the user's saved songs and 5 of their top songs over the past 4 weeks, and use them as seeding songs for Spotify's recommendation algorithm. It then takes the specified number of songs and creates a new playlist, and populates it with the recommended tracks.
 
 
 {% highlight python %}
