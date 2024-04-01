@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Solo Adventures in Tarragona and London"
+date: 2023-11-22 12:00:00 -0000
 categories: blog
 ---
 
