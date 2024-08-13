@@ -22,7 +22,7 @@ layout: home
 
 
 
-My name is Olli Mulchandani, and I'm a first-year student at the University of Virginia studying computer science. This site is a directory for all things related to me.
+My name is Olli Mulchandani, and I'm a second-year student at the University of Virginia studying computer science. This site is a directory for all things related to me.
   
 Some of my interests include computer science (evidently), soccer, Spanish, philosophy, going to the gym, tennis, snowboarding, and traveling (including solo travel). If you want to learn a little bit about my involvement in youth soccer, [here is an article about me](http://www.arlingtonsoccer.com/players-first-leadership-council-spotlight-olli-mulchandani) written by Arlington Soccer Association in April 2023.
 
