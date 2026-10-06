@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>if (location.protocol === 'http:' && !['localhost', '127.0.0.1'].includes(location.hostname)) location.replace(location.href.replace('http:', 'https:'))</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Semester at Sea · Olli Mulchandani</title>
+  <!-- Newsreader: a bookish text face with real italics, for a printed-album voice.
+       Barlow Condensed: tall and plain, close to Semester at Sea's own headings, for dates and labels.
+       Caveat: handwriting, used only for Olli's own notes once he has written them. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Caveat:wght@500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="scrapbook.css">
+</head>
+<body>
+  <nav id="tabs" aria-label="Countries"></nav>
+  <main id="book" class="book" aria-live="polite"></main>
+  <footer class="bar">
+    <button id="prev" aria-label="Previous pages">← Back</button>
+    <span><button id="play" title="Turn the pages automatically (P)">Play</button><span id="count"></span></span>
+    <button id="next" aria-label="Next pages">Turn →</button>
+  </footer>
+  <div id="gate" hidden>
+    <form>
+      <p class="q1">Do we know each other well enough for you to look at my personal photos?</p>
+      <label for="answer">Prove it. Enter the name of my dog.</label>
+      <input id="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button type="submit">Open the book</button>
+      <p class="wrong" role="alert"></p>
+    </form>
+  </div>
+  <div id="lightbox" hidden role="dialog" aria-label="Photograph">
+    <button class="close" aria-label="Close">Close</button>
+    <button class="bprev" aria-label="Previous">‹</button>
+    <div class="stage"></div>
+    <button class="bnext" aria-label="Next">›</button>
+    <p class="meta"></p>
+    <div class="note"></div>
+  </div>
+  <script src="scrapbook.js"></script>
+</body>
+</html>
