@@ -308,3 +308,6 @@ h2.chapter { font-size: 12.5cqw; margin-top: 2.5cqh; }
 .print .says { font-size: 4.6cqw; }
 .print .says q { font-size: 3.5cqw; }
 .print .says small { font-size: 2.2cqw; }
+
+/* a turning page swings toward the reader and so looks taller than the book for a moment; keep it inside the covers */
+.book { overflow: hidden; perspective: 4200px; }
