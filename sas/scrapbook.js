@@ -20,6 +20,25 @@ const nights = (n) => (n ? `${n} ${n === 1 ? 'night' : 'nights'}` : 'day stop')
 const seeded = (seed) => () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296)
 const hash = (s) => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7)
 
+// ---------- who came by ----------
+// Counts how far a visit got: arrived at the question, opened the book, read
+// a quarter, half, three quarters, finished. A personal link (…/sas/?from=ryan)
+// adds that name to each count. Nothing is sent from your own Mac.
+const who = (() => {
+  const given = (new URLSearchParams(location.search).get('from') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 24)
+  try {
+    if (given) localStorage.setItem('sas.from', given)
+    return given || localStorage.getItem('sas.from') || ''
+  } catch { return given }
+})()
+const sent = new Set()
+function mark(step, tries = 0) {
+  if (sent.has(step) || ['localhost', '127.0.0.1'].includes(location.hostname)) return
+  if (!window.goatcounter?.count) return tries < 20 && setTimeout(() => mark(step, tries + 1), 500) // the counter loads after the page
+  sent.add(step)
+  window.goatcounter.count({ path: who ? `${step} (${who})` : step, title: 'Semester at Sea', event: true })
+}
+
 // ---------- the lock ----------
 // A published copy is encrypted: every file under data/ is AES-256-GCM
 // ciphertext, and the key is derived from the answer to one question. The
@@ -80,8 +99,9 @@ async function tryAnswer(answer, info) {
 async function unlock() {
   const info = await fetch('data/vault.json', { cache: 'no-store' }).then((r) => (r.ok ? r.json() : null)).catch(() => null)
   if (!info) return
+  mark('arrived')
   const saved = localStorage.getItem('sas.answer')
-  if (saved) try { return await tryAnswer(saved, info) } catch { localStorage.removeItem('sas.answer') }
+  if (saved) try { return (await tryAnswer(saved, info), mark('opened')) } catch { localStorage.removeItem('sas.answer') }
   const gate = document.getElementById('gate')
   gate.hidden = false
   gate.querySelector('input').focus()
@@ -93,6 +113,7 @@ async function unlock() {
         await tryAnswer(answer, info)
         localStorage.setItem('sas.answer', answer.trim().toLowerCase())
         gate.hidden = true
+        mark('opened')
         done()
       } catch {
         gate.querySelector('.wrong').textContent = 'Not quite. Try again.'
@@ -542,6 +563,8 @@ function render(dir = 0, quick = false) {
   document.getElementById('prev').disabled = at === 0
   document.getElementById('next').textContent = at + step() >= list.length ? 'Close the book' : 'Turn →'
   history.replaceState(null, '', `#p${at}`)
+  const far = (at + step()) / list.length
+  for (const [share, name] of [[0.25, 'read a quarter'], [0.5, 'read half'], [0.75, 'read three quarters'], [1, 'finished']]) if (dir && far >= share) mark(name)
   const tabs = document.querySelectorAll('#tabs a')
   let current = null
   for (const [i, p] of list.entries()) if (i <= at + step() - 1 && p.id && p.kind === 'chapter') current = p.id
